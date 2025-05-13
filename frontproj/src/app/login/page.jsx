@@ -2,7 +2,6 @@
 
 import FundoFormularios from "../../components/FundoFormularios";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
 import Email from "../../components/Email";
 import Senha from "../../components/Senha";
 import Titulo from "../../components/Titulo";
@@ -14,6 +13,7 @@ function Login() {
   const [senha, setSenha] = useState("");
   const [msg, setMsg] = useState("");
 
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -27,10 +27,8 @@ function Login() {
     const usuario = { email, senha };
 
     try {
-      const resposta = await axios.post(
-        "http://localhost:3000/usuarios/login",
-        usuario
-      );
+      const resposta = await axios.post(`${apiURL}/usuarios/login`, usuario);
+
       const { email } = resposta.data.usuario;
       localStorage.setItem("userEmail", email);
 

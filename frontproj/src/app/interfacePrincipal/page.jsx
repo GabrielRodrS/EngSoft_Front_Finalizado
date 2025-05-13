@@ -11,7 +11,6 @@ export default function InterfacePrincipal() {
 
   useEffect(() => {
     const userEmail = localStorage.getItem("userEmail");
-    console.log("Email do usuário:", userEmail);
 
     if (!userEmail) {
       setMsg("Usuário não encontrado.");
