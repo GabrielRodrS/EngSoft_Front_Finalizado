@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function AlterarSenha() {
-  const apiURL = NEXT_PUBLIC_API_URL;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [senha, setSenha] = useState("");
   const [senhaNova, setSenhaNova] = useState("");
   const [msg, setMsg] = useState("");

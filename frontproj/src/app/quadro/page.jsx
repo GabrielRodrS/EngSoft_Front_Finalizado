@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 function Quadro() {
-  const apiURL = NEXT_PUBLIC_API_URL;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [bola, setBola] = useState(false);
   const [rede, setRede] = useState(false);
   const [coletes, setColetes] = useState(false);

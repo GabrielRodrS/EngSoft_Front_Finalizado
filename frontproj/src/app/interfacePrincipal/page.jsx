@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function InterfacePrincipal() {
-  const apiURL = NEXT_PUBLIC_API_URL;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [reservas, setReservas] = useState([]);
   const [msg, setMsg] = useState("");
 

@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 function AlterarNome() {
-  const apiURL = NEXT_PUBLIC_API_URL;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [msg, setMsg] = useState("");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState(null);

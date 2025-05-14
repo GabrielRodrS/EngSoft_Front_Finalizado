@@ -8,7 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function RecuperarSenha() {
-  const apiURL = NEXT_PUBLIC_API_URL;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);

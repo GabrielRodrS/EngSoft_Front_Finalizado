@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Pagamento() {
-  const apiURL = NEXT_PUBLIC_API_URL;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [tipoPagamento, settipoPagamento] = useState("");
   const [msg, setMsg] = useState("");
 

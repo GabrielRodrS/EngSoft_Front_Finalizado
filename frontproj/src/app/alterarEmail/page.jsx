@@ -9,7 +9,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 function AlterarEmail() {
-  const apiURL = NEXT_PUBLIC_API_URL;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [senha, setSenha] = useState("");
   const [altEmail, setaltEmail] = useState("");
   const [msg, setMsg] = useState("");

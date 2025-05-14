@@ -8,7 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function Login() {
-  const apiURL = NEXT_PUBLIC_API_URL;
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [senha, setSenha] = useState("");
   const [confSenha, setConfSenha] = useState("");
   const [msg, setMsg] = useState("");
