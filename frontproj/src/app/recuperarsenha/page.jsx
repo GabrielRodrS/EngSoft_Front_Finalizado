@@ -8,6 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function RecuperarSenha() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,7 +29,7 @@ export default function RecuperarSenha() {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:3000/recuperar/senha", { email });
+      await axios.post(`${apiURL}/recuperar/senha`, { email });
       setCampoCodigo(true);
       setMsg("Código enviado para seu e-mail.");
     } catch (error) {
@@ -52,7 +53,7 @@ export default function RecuperarSenha() {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:3000/recuperar/codigo", {
+      await axios.post(`${apiURL}/recuperar/codigo`, {
         email,
         code: codigo,
       });

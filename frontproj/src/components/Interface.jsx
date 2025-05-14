@@ -7,6 +7,7 @@ import axios from "axios";
 import GuiaNotf from "./GuiaNotf";
 
 export default function Interface({ children }) {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const [notf, setNotf] = useState(false);
   const [notificacoes, setNotificacoes] = useState([]);
@@ -21,9 +22,7 @@ export default function Interface({ children }) {
       }
 
       axios
-        .get(
-          `http://localhost:3000/notificacoes/mostrar?userEmail=${userEmail}`
-        )
+        .get(`${apiURL}/notificacoes/mostrar?userEmail=${userEmail}`)
         .then((response) => {
           console.log("Notificações recebidas:", response.data);
           setNotificacoes(response.data);

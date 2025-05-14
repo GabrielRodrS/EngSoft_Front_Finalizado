@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Pagamento() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [tipoPagamento, settipoPagamento] = useState("");
   const [msg, setMsg] = useState("");
 
@@ -17,7 +18,7 @@ export default function Pagamento() {
   const [codigoCartao, setCodigoCartao] = useState("");
 
   const [chavePix, setChavePix] = useState("");
-  const [qrCode, setQrCode] = useState("");
+  // const [qrCode, setQrCode] = useState("");
 
   const router = useRouter();
 
@@ -55,7 +56,7 @@ export default function Pagamento() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:3000/reservas", { ...reservaInfo });
+      await axios.post(`${apiURL}/reservas`, { ...reservaInfo });
 
       setMsg("");
       router.push("/pagamento/realizado");
@@ -71,7 +72,7 @@ export default function Pagamento() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:3000/reservas", { ...reservaInfo });
+      await axios.post(`${apiURL}/reservas`, { ...reservaInfo });
 
       setMsg("");
       router.push("/pagamento/realizado");

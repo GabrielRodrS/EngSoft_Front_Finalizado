@@ -8,6 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function Login() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [senha, setSenha] = useState("");
   const [confSenha, setConfSenha] = useState("");
   const [msg, setMsg] = useState("");
@@ -37,7 +38,7 @@ function Login() {
 
     try {
       const resposta = await axios.patch(
-        "http://localhost:3000/usuarios/novasenha",
+        `${apiURL}/usuarios/novasenha`,
         usuario
       );
       setMsg("");

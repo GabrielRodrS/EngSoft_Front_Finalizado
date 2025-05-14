@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 function AlterarTelefone() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [msg, setMsg] = useState("");
   const [tel, setTel] = useState("");
   const [email, setEmail] = useState(null);
@@ -60,10 +61,7 @@ function AlterarTelefone() {
     const usuario = { email, telefone: tel };
 
     try {
-      const resposta = await axios.patch(
-        "http://localhost:3000/usuarios/alttel",
-        usuario
-      );
+      const resposta = await axios.patch(`${apiURL}/usuarios/alttel`, usuario);
 
       const { telefone: novoTel } = resposta.data.usuario;
       localStorage.setItem("userTel", novoTel);

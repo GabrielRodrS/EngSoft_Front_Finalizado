@@ -1,5 +1,6 @@
 "use client";
 
+import InputMask from "react-input-mask";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
@@ -10,6 +11,7 @@ import Titulo from "../../components/Titulo";
 function Cadastro() {
   const router = useRouter();
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
+  const [carregando, setCarregando] = useState(false);
 
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -19,25 +21,41 @@ function Cadastro() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMsg("");
+    setCarregando(true);
 
     if (
       nome.trim() === "" ||
       telefone.trim() === "" ||
-      telefone.trim() === "" ||
       senha.trim() === "" ||
       email.trim() === ""
     ) {
+      setCarregando(false);
       return setMsg("Preencha todos os campos!");
     }
 
+    if (telefone.replace(/\D/g, "").length < 11) {
+      setCarregando(false);
+      return setMsg("Telefone incompleto!");
+    }
+
     if (senha.length < 8) {
+      setCarregando(false);
       return setMsg("Senha muito curta!");
     }
 
     const usuario = { nome, email, senha, telefone };
 
+    const delayMsg = setTimeout(() => {
+      setMsg("Iniciando serviço, pode levar até 1 min...");
+    }, 3000);
+
     try {
       const resposta = await axios.post(`${apiURL}/usuarios`, usuario);
+
+      clearTimeout(delayMsg);
+      setCarregando(false);
+      setMsg("");
 
       const { email } = resposta.data.usuario;
       localStorage.setItem("userEmail", email);
@@ -50,6 +68,8 @@ function Cadastro() {
 
       router.push("/interfacePrincipal");
     } catch (erro) {
+      clearTimeout(delayMsg);
+      setCarregando(false);
       setMsg(
         erro.response?.data?.message || "Erro ao cadastrar. Tente novamente."
       );
@@ -75,15 +95,21 @@ function Cadastro() {
           <Senha setSenha={setSenha} senha={senha}></Senha>
 
           <p className=" pt-5">Telefone:</p>
-          <input
-            type="tel"
-            placeholder="(  ) _____-____"
-            maxLength="15"
-            className="border border-gray-800 rounded px-3 py-2 w-full mt-1"
+          <InputMask
+            mask="(99) 99999-9999"
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
-            pattern="\(\d{2}\)\s\d{4,5}-\d{4}"
-          ></input>
+          >
+            {(inputProps) => (
+              <input
+                {...inputProps}
+                type="tel"
+                placeholder="(00) 00000-0000"
+                title="Formato: (99) 99999-9999"
+                className="border border-gray-800 rounded px-3 py-2 w-full mt-1"
+              />
+            )}
+          </InputMask>
           <div className="flex items-center justify-center mt-10 space-x-10">
             <button
               onClick={() => {
@@ -97,8 +123,9 @@ function Cadastro() {
             <button
               type="submit"
               className="bg-green-500 py-2 px-4 rounded hover:text-gray-800"
+              disabled={carregando}
             >
-              Cadastrar
+              {carregando ? "Carregando..." : "Cadastrar"}
             </button>
           </div>
         </div>

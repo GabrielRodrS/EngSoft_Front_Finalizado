@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 function Quadro() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [bola, setBola] = useState(false);
   const [rede, setRede] = useState(false);
   const [coletes, setColetes] = useState(false);
@@ -25,7 +26,7 @@ function Quadro() {
       const formattedDate = `${day}-${month}-${year}`;
 
       axios
-        .get(`http://localhost:3000/reservas/quadro?data=${formattedDate}`)
+        .get(`${apiURL}/reservas/quadro?data=${formattedDate}`)
 
         .then((response) => {
           setHorariosOcupados(response.data.map((hora) => hora.horario));

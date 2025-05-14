@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function AlterarSenha() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [senha, setSenha] = useState("");
   const [senhaNova, setSenhaNova] = useState("");
   const [msg, setMsg] = useState("");
@@ -36,10 +37,7 @@ function AlterarSenha() {
     const dados = { email, senha, senhaNova };
 
     try {
-      const resp = await axios.patch(
-        "http://localhost:3000/usuarios/altsenha",
-        dados
-      );
+      const resp = await axios.patch(`${apiURL}/usuarios/altsenha`, dados);
       setMsg("Senha alterada com sucesso!");
     } catch (erro) {
       setMsg(erro.response?.data?.message || "Informações inválidas!.");

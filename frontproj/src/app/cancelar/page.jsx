@@ -17,6 +17,7 @@ export default function Cancelar() {
 }
 
 function CancelarContent() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -54,7 +55,7 @@ function CancelarContent() {
         return;
       }
 
-      const url = `http://localhost:3000/reservas/cancelar`;
+      const url = `${apiURL}/reservas/cancelar`;
 
       const resultado = await axios.delete(url, {
         params: {
@@ -67,7 +68,7 @@ function CancelarContent() {
       if (resultado.status === 200) {
         console.log("Reserva cancelada com sucesso!");
 
-        await axios.post(`http://localhost:3000/notificacoes`, {
+        await axios.post(`${apiURL}/notificacoes`, {
           data: reservaInfo.data,
           horario: reservaInfo.horario,
           verif: false,

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Historico() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [filtroData, setFiltroData] = useState("");
   const [filtroHorario, setFiltroHorario] = useState("");
   const [historico, setHistorico] = useState([]);
@@ -20,7 +21,7 @@ export default function Historico() {
     }
 
     axios
-      .get(`http://localhost:3000/reservas/historico?userEmail=${userEmail}`)
+      .get(`${apiURL}/reservas/historico?userEmail=${userEmail}`)
       .then((response) => {
         console.log("Dados recebidos:", response.data);
         setHistorico(response.data);

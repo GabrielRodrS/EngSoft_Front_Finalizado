@@ -9,6 +9,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 function AlterarEmail() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [senha, setSenha] = useState("");
   const [altEmail, setaltEmail] = useState("");
   const [msg, setMsg] = useState("");
@@ -37,10 +38,7 @@ function AlterarEmail() {
     const dados = { email, novoEmail: altEmail, senha };
 
     try {
-      const resposta = await axios.patch(
-        "http://localhost:3000/usuarios/altemail",
-        dados
-      );
+      const resposta = await axios.patch(`${apiURL}/usuarios/altemail`, dados);
 
       const { email: novoEmail } = resposta.data.usuario;
       localStorage.setItem(

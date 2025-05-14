@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 function AlterarNome() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [msg, setMsg] = useState("");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState(null);
@@ -36,10 +37,7 @@ function AlterarNome() {
     const usuario = { email, nome };
 
     try {
-      const resposta = await axios.patch(
-        "http://localhost:3000/usuarios/altnome",
-        usuario
-      );
+      const resposta = await axios.patch(`${apiURL}/usuarios/altnome`, usuario);
 
       const { nome: novoNome } = resposta.data.usuario;
       localStorage.setItem("userNome", novoNome);

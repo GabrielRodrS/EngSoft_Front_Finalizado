@@ -9,6 +9,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function Login() {
+  const [carregando, setCarregando] = useState(false);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [msg, setMsg] = useState("");
@@ -18,16 +19,27 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setCarregando(true);
+    setMsg("");
 
     if (senha.trim() === "" || email.trim() === "") {
       setMsg("Preencha os campos!");
+      setCarregando(false);
       return;
     }
 
     const usuario = { email, senha };
 
+    const delayMsg = setTimeout(() => {
+      setMsg("Iniciando serviço, pode levar até 1 min...");
+    }, 3000);
+
     try {
       const resposta = await axios.post(`${apiURL}/usuarios/login`, usuario);
+
+      clearTimeout(delayMsg);
+      setCarregando(false);
+      setMsg("");
 
       const { email } = resposta.data.usuario;
       localStorage.setItem("userEmail", email);
@@ -40,6 +52,8 @@ function Login() {
 
       router.push("/interfacePrincipal");
     } catch (erro) {
+      clearTimeout(delayMsg);
+      setCarregando(false);
       setMsg(
         erro.response?.data?.message ||
           "Erro ao realizar login. Tente novamente."
@@ -68,8 +82,9 @@ function Login() {
             <button
               type="submit"
               className="bg-green-500 py-2 px-4 rounded hover:text-gray-800"
+              disabled={carregando}
             >
-              Login
+              {carregando ? "Carregando..." : "Login"}
             </button>
           </div>
         </form>

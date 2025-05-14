@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function InterfacePrincipal() {
+  const apiURL = NEXT_PUBLIC_API_URL;
   const [reservas, setReservas] = useState([]);
   const [msg, setMsg] = useState("");
 
@@ -18,7 +19,7 @@ export default function InterfacePrincipal() {
     }
 
     axios
-      .get(`http://localhost:3000/reservas/interface?userEmail=${userEmail}`)
+      .get(`${apiURL}/reservas/interface?userEmail=${userEmail}`)
       .then((response) => {
         console.log("Dados recebidos:", response.data);
         setReservas(response.data);
