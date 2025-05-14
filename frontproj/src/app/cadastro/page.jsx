@@ -9,6 +9,7 @@ import Titulo from "../../components/Titulo";
 
 function Cadastro() {
   const router = useRouter();
+  const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -36,11 +37,7 @@ function Cadastro() {
     const usuario = { nome, email, senha, telefone };
 
     try {
-      console.log(dados);
-      const resposta = await axios.post(
-        "http://localhost:3000/usuarios",
-        usuario
-      );
+      const resposta = await axios.post(`${apiURL}/usuarios`, usuario);
 
       const { email } = resposta.data.usuario;
       localStorage.setItem("userEmail", email);
