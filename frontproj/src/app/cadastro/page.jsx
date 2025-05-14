@@ -1,6 +1,5 @@
 "use client";
 
-import InputMask from "react-input-mask";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
@@ -76,6 +75,19 @@ function Cadastro() {
     }
   };
 
+  const formatarTelefone = (e) => {
+    const valor = e.target.value.replace(/\D/g, "");
+    if (valor.length <= 2) {
+      setTelefone(valor);
+    } else if (valor.length <= 6) {
+      setTelefone(`(${valor.slice(0, 2)}) ${valor.slice(2)}`);
+    } else {
+      setTelefone(
+        `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7, 11)}`
+      );
+    }
+  };
+
   return (
     <div className="flex flex-col text-black items-center justify-center mt-5">
       <Titulo>Cadastrar</Titulo>
@@ -95,21 +107,15 @@ function Cadastro() {
           <Senha setSenha={setSenha} senha={senha}></Senha>
 
           <p className=" pt-5">Telefone:</p>
-          <InputMask
-            mask="(99) 99999-9999"
+          <input
+            type="text"
             value={telefone}
-            onChange={(e) => setTelefone(e.target.value)}
-          >
-            {(inputProps) => (
-              <input
-                {...inputProps}
-                type="tel"
-                placeholder="(00) 00000-0000"
-                title="Formato: (99) 99999-9999"
-                className="border border-gray-800 rounded px-3 py-2 w-full mt-1"
-              />
-            )}
-          </InputMask>
+            onChange={formatarTelefone}
+            placeholder="(00) 00000-0000"
+            maxLength="15"
+            className="border border-gray-800 rounded px-3 py-2 w-full mt-1"
+            title="Formato: (99) 99999-9999"
+          />
           <div className="flex items-center justify-center mt-10 space-x-10">
             <button
               onClick={() => {
