@@ -85,14 +85,13 @@ function Quadro() {
 
   return (
     <Interface>
-      <h1 className="text-center font-bold text-2xl sm:text-4xl text-amber-500 mb-10">
+      <h1 className="text-center font-bold text-2xl sm:text-4xl text-amber-500 mt-5 mb-0 md:mb-5">
         Quadro de horários
       </h1>
 
       <div className="flex flex-col md:flex-row md:space-x-10 space-y-10 md:space-y-0 justify-center items-start">
-        {/* Horário - Fica acima em mobile */}
         <div className="flex flex-col items-center  shadow-xl rounded-md w-full md:w-2/6 p-6 order-1">
-          <div className="bg-gray-200 w-full text-black py-4 mb-4 rounded">
+          <div className=" bg-gradient-to-b from-gray-400 to-gray-100 w-full text-black py-4 mb-4 rounded">
             <h1 className="text-center font-bold text-xl md:text-2xl">
               Selecionar horário
             </h1>
@@ -128,7 +127,7 @@ function Quadro() {
         </div>
 
         <div className="flex flex-col items-center shadow-xl rounded-md w-full md:w-2/6 p-6 order-2">
-          <div className=" w-full bg-gray-200 text-black py-4 mb-4 rounded">
+          <div className=" w-full bg-gradient-to-b from-gray-400 to-gray-100 text-black py-4 mb-4 rounded">
             <h1 className="text-center font-bold text-xl md:text-2xl">
               Selecionar data
             </h1>

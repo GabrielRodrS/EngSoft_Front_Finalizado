@@ -160,7 +160,7 @@ export default function Pagamento() {
               Confirmar
             </button>
             {msg && (
-              <div className="text-red-800 mt-5 font-semibold">{msg}</div>
+              <div className="text-red-800 mt-5 font-semibold mx-2">{msg}</div>
             )}
           </form>
         )}

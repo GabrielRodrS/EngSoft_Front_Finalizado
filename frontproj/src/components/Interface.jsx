@@ -119,8 +119,8 @@ export default function Interface({ children }) {
         </nav>
       </header>
 
-      <div className="flex flex-row flex-1 h-[calc(100vh-5rem)] text-black">
-        <main className="flex-1 p-10 overflow-y-auto">{children}</main>
+      <div className="flex flex-row flex-1  h-[calc(100vh-5rem)] text-black">
+        <main className="flex-1 p-0 sm:p-10 overflow-y-auto">{children}</main>
       </div>
 
       {notf && <GuiaNotf notificacoes={notificacoes} />}

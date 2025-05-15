@@ -2,7 +2,7 @@ import { Check, X } from "lucide-react";
 
 function InfoReserv({ data, horario, valor, bola, rede, coletes }) {
   return (
-    <div className="flex  flex-col md:flex-row w-5/6 h-1/4 md:space-x-3 pr-5 space-y-3 md:space-y-0 ">
+    <div className="flex  flex-col md:flex-row w-5/6 h-1/4 md:space-x-3 space-y-3 md:space-y-0 ">
       <div className="flex flex-col w-full md:w-2/3 bg-yellow-200 space-y-2 text-violet-900 mr-5 pb-2 pl-2">
         <h3 className="ml-2 mt-2">Data: {data}</h3>
         <h3 className="ml-2">Horário: {horario}</h3>

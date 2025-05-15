@@ -9,8 +9,8 @@ export default function InfoReserv2({ reserva }) {
         <h3>Valor: {reserva.valor},00 R$</h3>
       </div>
       <div className="flex flex-col bg-yellow-200 w-full md:w-1/2 text-violet-900 p-3">
-        <h3 className="mb-3">Equipamentos:</h3>
-        <div className="flex flex-row space-x-4 items-center justify-center">
+        <h3 className="mb-3 text-center">Equipamentos:</h3>
+        <div className="flex  sm:flex-row flex-col md:space-x-4 items-center justify-center">
           <div className="flex flex-col items-center">
             <label>Bola</label>
             {reserva.bola ? (

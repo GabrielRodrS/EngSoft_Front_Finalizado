@@ -44,7 +44,7 @@ export default function InterfacePrincipal() {
 
   return (
     <Interface>
-      <div className="h-max w-full flex items-center justify-center px-4">
+      <div className="h-max w-full flex items-center justify-center px-4 my-3">
         <div className="flex flex-col space-y-3 bg-stone-200 w-full sm:w-4/5 md:w-3/5 pb-6 rounded-xl">
           <div className="flex items-center justify-center mt-10">
             <h1 className="text-center text-xl sm:text-3xl mb-5 bold font-bold text-amber-800">
