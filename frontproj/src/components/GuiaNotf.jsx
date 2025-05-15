@@ -11,7 +11,7 @@ function GuiaNotf({ notificacoes }) {
             {notificacoes.map((notificacao) => (
               <div
                 key={notificacao.id}
-                className="flex items-center space-x-2 bg-amber-300 p-2 rounded-md"
+                className="flex items-center space-x-2 p-2 rounded-md border-b-2 border-gray"
               >
                 {notificacao.icone ? (
                   <Check className="text-green-800" />
