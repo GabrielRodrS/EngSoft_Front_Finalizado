@@ -120,7 +120,7 @@ export default function Pagamento() {
             <Titulo>Escolher opção de pagamento:</Titulo>
             <div className="flex flex-row space-x-10 mt-5">
               <button onClick={() => settipoPagamento("pix")}>
-                <img src="/img/pix-img.jpg" alt="pix" width={105} height={50} />
+                <img src="/img/Pix-img.jpg" alt="pix" width={105} height={50} />
               </button>
               <button onClick={() => settipoPagamento("cartão")}>
                 <img

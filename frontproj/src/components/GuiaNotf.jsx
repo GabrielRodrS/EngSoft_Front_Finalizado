@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react";
 function GuiaNotf({ notificacoes }) {
   return (
     <div className="h-screen w-screen flex justify-center">
-      <div className="fixed right-32 top-20 text-black bg-white p-4 shadow-xl rounded-lg w-90 max-h-96 overflow-y-auto">
+      <div className="fixed right-2 top-20 text-black bg-white p-4 shadow-xl rounded-lg w-[22rem] max-h-96 overflow-y-auto">
         <h2 className="font-bold text-lg mb-2 text-center">Notificações</h2>
 
         {Array.isArray(notificacoes) && notificacoes.length > 0 ? (

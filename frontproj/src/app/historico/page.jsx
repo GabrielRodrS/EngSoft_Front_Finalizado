@@ -73,13 +73,15 @@ export default function Historico() {
   return (
     <Interface>
       <div className="h-max w-full flex items-center justify-center">
-        <div className="flex flex-col space-y-3 bg-gray-200 w-3/5 pb-6">
-          <h1 className="text-center font-bold pb-10 text-3xl mt-10 bold text-yellow-800 ">
+        <div className="flex flex-col space-y-3 bg-gray-200 w-full md:w-3/5 pb-6 rounded-xl">
+          <h1 className="text-center font-bold mb-5 text-xl sm:text-3xl mt-8 bold text-yellow-800">
             Histórico de horários
           </h1>
-          <div className="flex flex-row space-x-16 items-center justify-center">
+          <div className="flex flex-row space-x-8 md:space-x-16 items-center justify-center mx-5">
             <div>
-              <h2 className="font-bold text-2xl text-yellow-700">Filtros:</h2>
+              <h2 className="font-bold text-lg smtext-2xl text-yellow-700">
+                Filtros:
+              </h2>
             </div>
             <div>
               <label className="text-blue-600 mr-2">Data:</label>

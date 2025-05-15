@@ -5,7 +5,7 @@ function SelecionarHorario({ children, selectedHorario, onSelect, disabled }) {
 
   return (
     <button
-      className={`text-black text-center justify-center p-2 pb-8 border-2 border-purple-800 shadow-xl ${
+      className={`text-black text-center justify-center p-1.5  border-2 rounded-md border-purple-800 shadow-xl ${
         disabled
           ? "bg-gray-400 cursor-not-allowed"
           : isSelected

@@ -11,6 +11,7 @@ export default function Interface({ children }) {
   const router = useRouter();
   const [notf, setNotf] = useState(false);
   const [notificacoes, setNotificacoes] = useState([]);
+  const [menuAberto, setMenuAberto] = useState(false);
 
   useEffect(() => {
     if (notf) {
@@ -35,59 +36,87 @@ export default function Interface({ children }) {
 
   return (
     <div
-      className="bg-white overflow-hidden h-screen "
+      className="bg-white flex flex-col min-h-screen"
       onClick={() => {
         if (notf == true) {
           setNotf(false);
         }
       }}
     >
-      <header className="bg-green-400 h-20 flex flex-row text-blue-950 font-bold text-lg items-center justify-between">
+      <header className="bg-green-400 h-20 flex items-center justify-between px-4 md:px-5 text-blue-950 font-bold text-lg">
         <button
           onClick={() => router.push("/interfacePrincipal")}
-          className="ml-5 hover:text-black"
-        >
-          <img src="/img/Logo.png" alt="Logo" height={70} width={70}></img>
-        </button>
-
-        <button
-          className="flex items-center hover:text-black"
-          onClick={() => router.push("./quadro")}
-        >
-          <Calendar className="mr-2" /> Quadro de horários
-        </button>
-
-        <button
-          className="flex items-center hover:text-black"
-          onClick={() => router.push("/historico")}
-        >
-          <Album className="mr-2" /> Histórico de horários
-        </button>
-
-        <button
           className="hover:text-black"
-          onClick={() => {
-            setNotf(true);
-          }}
         >
-          <Bell />
+          <img src="/img/Logo.png" alt="Logo" height={60} width={60} />
         </button>
 
         <button
-          onClick={() => router.push("/perfil")}
-          className="mr-5 hover:text-black flex items-center"
+          className="md:hidden flex flex-col space-y-1"
+          onClick={() => setMenuAberto(!menuAberto)}
+          aria-label="Abrir menu"
         >
-          <div className="flex flex-col items-center">
-            <img
-              src="/img/fotoperfil.png"
-              alt="perfil"
-              width={30}
-              height={30}
-              className="mr-1"
-            ></img>
-            <span>Perfil</span>
-          </div>
+          <span className="block w-6 h-0.5 bg-blue-950"></span>
+          <span className="block w-6 h-0.5 bg-blue-950"></span>
+          <span className="block w-6 h-0.5 bg-blue-950"></span>
         </button>
+
+        <nav
+          className={`flex-col md:flex-row md:flex items-center absolute md:static top-20 left-0 right-0 bg-green-400 md:bg-transparent
+      md:space-x-6
+      ${menuAberto ? "flex" : "hidden"} md:flex
+      z-50
+    `}
+        >
+          <button
+            className="flex items-center px-4 py-3 hover:text-black border-b md:border-none border-green-300 md:border-0 w-full md:w-auto"
+            onClick={() => {
+              router.push("./quadro");
+              setMenuAberto(false);
+            }}
+          >
+            <Calendar className="mr-2" /> Quadro de horários
+          </button>
+
+          <button
+            className="flex items-center px-4 py-3 hover:text-black border-b md:border-none border-green-300 md:border-0 w-full md:w-auto"
+            onClick={() => {
+              router.push("/historico");
+              setMenuAberto(false);
+            }}
+          >
+            <Album className="mr-2" /> Histórico de horários
+          </button>
+
+          <button
+            className="px-4 py-3 hover:text-black w-full md:w-auto"
+            onClick={() => {
+              setNotf(true);
+              setMenuAberto(false);
+            }}
+          >
+            <Bell />
+          </button>
+
+          <button
+            onClick={() => {
+              router.push("/perfil");
+              setMenuAberto(false);
+            }}
+            className="flex items-center px-4 py-3 hover:text-black w-full md:w-auto"
+          >
+            <div className="flex flex-col items-center">
+              <img
+                src="/img/fotoperfil.png"
+                alt="perfil"
+                width={30}
+                height={30}
+                className="mr-1"
+              />
+              <span>Perfil</span>
+            </div>
+          </button>
+        </nav>
       </header>
 
       <div className="flex flex-row flex-1 h-[calc(100vh-5rem)] text-black">

@@ -78,25 +78,62 @@ function Quadro() {
 
   return (
     <Interface>
-      <h1 className="text-center font-bold text-4xl mb-10">
+      <h1 className="text-center font-bold text-2xl sm:text-4xl text-amber-500 mb-10">
         Quadro de horários
       </h1>
 
-      <div className="flex flex-row h-5/6 space-x-10 justify-center">
-        <div className="flex flex-col items-center border-2 border-black shadow-xl w-2/6 rounded-md">
-          <div className="bg-black w-full text-white">
-            <h1 className="text-center font-bold text-2xl mb-6 mt-8">
+      <div className="flex flex-col md:flex-row md:space-x-10 space-y-10 md:space-y-0 justify-center items-start">
+        {/* Horário - Fica acima em mobile */}
+        <div className="flex flex-col items-center  shadow-xl rounded-md w-full md:w-2/6 p-6 order-1">
+          <div className="bg-gray-200 w-full text-black py-4 mb-4 rounded">
+            <h1 className="text-center font-bold text-xl md:text-2xl">
+              Selecionar horário
+            </h1>
+          </div>
+          <div className="grid grid-rows-5 grid-cols-3 gap-4 w-full">
+            {[
+              "8:00",
+              "9:00",
+              "10:00",
+              "11:00",
+              "12:00",
+              "13:00",
+              "14:00",
+              "15:00",
+              "16:00",
+              "17:00",
+              "18:00",
+              "19:00",
+              "20:00",
+              "21:00",
+              "22:00",
+            ].map((hora) => (
+              <SelecionarHorario
+                key={hora}
+                selectedHorario={selectedHorario}
+                onSelect={handleSelectHorario}
+                disabled={horariosOcupados.includes(hora)}
+              >
+                {hora}
+              </SelecionarHorario>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center shadow-xl rounded-md w-full md:w-2/6 p-6 order-2">
+          <div className=" w-full bg-gray-200 text-black py-4 mb-4 rounded">
+            <h1 className="text-center font-bold text-xl md:text-2xl">
               Selecionar data
             </h1>
           </div>
           <input
             ref={dateInputRef}
-            className="border rounded px-3 py-2 mt-5"
+            className="border rounded px-3 py-2 mb-6 w-full"
             type="date"
             onChange={(e) => setData(e.target.value)}
           />
 
-          <div className="text-black mt-10 space-y-1">
+          <div className="text-black w-full space-y-2 mb-6">
             <h3 className="font-bold mb-2">Equipamentos necessários:</h3>
             <div className="flex items-center space-x-2">
               <input
@@ -127,51 +164,16 @@ function Quadro() {
             </div>
           </div>
 
-          <form onSubmit={solicitar}>
+          <form onSubmit={solicitar} className="w-full text-center">
             <button
               type="submit"
-              className="bg-green-500 py-2 px-4 rounded text-white mt-8 hover:text-gray-800"
+              className="bg-green-500 py-2 px-4 rounded text-white hover:text-gray-800"
             >
               Solicitar
             </button>
           </form>
-          {msg && <div className="text-red-800 mt-8 pb-10">{msg}</div>}
-        </div>
 
-        <div className="flex flex-col items-center border-2 border-black shadow-xl w-2/6 rounded-md overflow-hidden">
-          <div className="bg-black w-full text-white">
-            <h1 className="text-center font-bold text-2xl mb-6 mt-8">
-              Selecionar horário
-            </h1>
-          </div>
-          <div className="grid grid-rows-8 grid-cols-3 gap-8 h-full mx-5 mt-10">
-            {[
-              "8:00",
-              "9:00",
-              "10:00",
-              "11:00",
-              "12:00",
-              "13:00",
-              "14:00",
-              "15:00",
-              "16:00",
-              "17:00",
-              "18:00",
-              "19:00",
-              "20:00",
-              "21:00",
-              "22:00",
-            ].map((hora) => (
-              <SelecionarHorario
-                key={hora}
-                selectedHorario={selectedHorario}
-                onSelect={handleSelectHorario}
-                disabled={horariosOcupados.includes(hora)}
-              >
-                {hora}
-              </SelecionarHorario>
-            ))}
-          </div>
+          {msg && <div className="text-red-800 font-semibold mt-5">{msg}</div>}
         </div>
       </div>
     </Interface>

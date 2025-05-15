@@ -89,12 +89,12 @@ function Cadastro() {
   };
 
   return (
-    <div className="flex flex-col text-black items-center justify-center mt-5">
+    <div className="flex flex-col text-black items-center justify-center mt-5 md:mt-10">
       <Titulo>Cadastrar</Titulo>
-      <form onSubmit={handleSubmit}>
-        <div className="pb-8">
+      <form onSubmit={handleSubmit} className="w-full max-w-md px-4">
+        <div className="pb-8 mt-3">
           <div></div>
-          <p className=" pt-5">Nome:</p>
+          <p className=" pt-4">Nome:</p>
           <input
             type="text"
             placeholder="Inserir nome"
@@ -106,7 +106,7 @@ function Cadastro() {
           <Email setEmail={setEmail} email={email}></Email>
           <Senha setSenha={setSenha} senha={senha}></Senha>
 
-          <p className=" pt-5">Telefone:</p>
+          <p className=" pt-4">Telefone:</p>
           <input
             type="text"
             value={telefone}
@@ -122,7 +122,7 @@ function Cadastro() {
                 router.push("/login");
               }}
               type="button"
-              className=" bg-blue-400 py-2 px-4 rounded hover:text-gray-800"
+              className=" bg-gray-300 py-2 px-4 rounded hover:text-gray-800"
             >
               Ir para login
             </button>
@@ -131,12 +131,19 @@ function Cadastro() {
               className="bg-green-500 py-2 px-4 rounded hover:text-gray-800"
               disabled={carregando}
             >
-              {carregando ? "Carregando..." : "Cadastrar"}
+              {carregando ? (
+                <div className="flex items-center gap-2">
+                  <div className="h-4 w-4 border-2 border-blue-900 border-t-transparent rounded-full animate-spin"></div>
+                  <span>Carregando...</span>
+                </div>
+              ) : (
+                "Cadastrar"
+              )}
             </button>
           </div>
         </div>
       </form>
-      {msg && <div className="text-red-800 mb-5">{msg}</div>}
+      {msg && <div className="text-red-700 mb-5 font-semibold">{msg}</div>}
     </div>
   );
 }

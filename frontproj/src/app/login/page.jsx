@@ -66,7 +66,7 @@ function Login() {
       <div className="flex flex-col items-center justify-center text-black mt-5">
         <Titulo>Login</Titulo>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="mt-2">
           <Email setEmail={setEmail} email={email}></Email>
           <Senha setSenha={setSenha} senha={senha}></Senha>
           <div className=" text-black space-x-10 flex justify-center items-center mb-10 mt-10 ">
@@ -75,7 +75,7 @@ function Login() {
                 router.push("/");
               }}
               type="button"
-              className=" bg-blue-400 py-2 px-4 rounded hover:text-gray-800"
+              className=" bg-gray-300 py-2 px-4 rounded hover:text-gray-800"
             >
               Ir para Cadastro
             </button>
@@ -84,11 +84,18 @@ function Login() {
               className="bg-green-500 py-2 px-4 rounded hover:text-gray-800"
               disabled={carregando}
             >
-              {carregando ? "Carregando..." : "Login"}
+              {carregando ? (
+                <div className="flex items-center gap-2">
+                  <div className="h-4 w-4 border-2 border-blue-900 border-t-transparent rounded-full animate-spin"></div>
+                  <span>Carregando...</span>
+                </div>
+              ) : (
+                "Login"
+              )}
             </button>
           </div>
         </form>
-        {msg && <div className="text-red-800 mb-5">{msg}</div>}
+        {msg && <div className="text-red-700 mb-5 font-semibold">{msg}</div>}
       </div>
     </FundoFormularios>
   );

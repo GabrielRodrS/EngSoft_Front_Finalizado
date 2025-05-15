@@ -2,37 +2,37 @@ import { Check, X } from "lucide-react";
 
 export default function InfoReserv2({ reserva }) {
   return (
-    <div className="flex flex-row w-2/3 h-1/4 space-x-3">
-      <div className="flex flex-col w-1/2 bg-yellow-200 space-y-2 text-violet-900 mr-5">
-        <h3 className="ml-2 mt-2">Data: {reserva.data}</h3>
-        <h3 className="ml-2">Horário: {reserva.horario}</h3>
-        <h3 className="ml-2">Valor: {reserva.valor},00 R$</h3>
+    <div className="flex flex-col md:flex-row w-full md:w-2/3 h-auto space-y-3 md:space-y-0 md:space-x-3">
+      <div className="flex flex-col w-full md:w-1/2 bg-yellow-200 space-y-2 text-violet-900 p-3">
+        <h3>Data: {reserva.data}</h3>
+        <h3>Horário: {reserva.horario}</h3>
+        <h3>Valor: {reserva.valor},00 R$</h3>
       </div>
-      <div className="flex flex-col bg-yellow-200 w-1/2 space-x-2 text-violet-900">
-        <h3 className="ml-2 mt-1 mb-5">Equipamentos:</h3>
+      <div className="flex flex-col bg-yellow-200 w-full md:w-1/2 text-violet-900 p-3">
+        <h3 className="mb-3">Equipamentos:</h3>
         <div className="flex flex-row space-x-4 items-center justify-center">
-          <div className="flex flex-col items-center ">
-            <label className="">Bola</label>
+          <div className="flex flex-col items-center">
+            <label>Bola</label>
             {reserva.bola ? (
-              <Check className="text-green-800" size={20}></Check>
+              <Check className="text-green-800" size={20} />
             ) : (
-              <X className="text-red-600" size={20}></X>
+              <X className="text-red-600" size={20} />
             )}
           </div>
           <div className="flex flex-col items-center">
-            <p className="">Rede</p>
+            <label>Rede</label>
             {reserva.rede ? (
-              <Check className="text-green-800" size={20}></Check>
+              <Check className="text-green-800" size={20} />
             ) : (
-              <X className="text-red-600" size={20}></X>
+              <X className="text-red-600" size={20} />
             )}
           </div>
           <div className="flex flex-col items-center">
-            <p className="">Coletes</p>
+            <label>Coletes</label>
             {reserva.coletes ? (
-              <Check className="text-green-800" size={20}></Check>
+              <Check className="text-green-800" size={20} />
             ) : (
-              <X className="text-red-600" size={20}></X>
+              <X className="text-red-600" size={20} />
             )}
           </div>
         </div>
