@@ -4,6 +4,7 @@ import InfoReservHist from "../../components/InfoReservHist";
 import Interface from "../../components/Interface";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Historico() {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
@@ -11,6 +12,7 @@ export default function Historico() {
   const [filtroHorario, setFiltroHorario] = useState("");
   const [historico, setHistorico] = useState([]);
   const [msg, setMsg] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const emailOn = localStorage.getItem("userEmail");

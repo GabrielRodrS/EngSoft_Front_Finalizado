@@ -4,11 +4,13 @@ import Interface from "../../components/Interface";
 import InfoReservInterf from "../../components/InfoReservInterf";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function InterfacePrincipal() {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [reservas, setReservas] = useState([]);
   const [msg, setMsg] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const emailOn = localStorage.getItem("userEmail");
