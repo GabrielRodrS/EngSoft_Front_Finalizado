@@ -62,14 +62,14 @@ export default function Interface({ children }) {
         </button>
 
         <nav
-          className={`flex-col md:flex-row md:flex items-center absolute md:static top-20 left-0 right-0 bg-orange-300 md:bg-transparent
+          className={`flex-col md:flex-row md:flex items-center absolute md:static top-20 left-0 right-0 bg-orange-100 md:bg-transparent
       md:space-x-6
       ${menuAberto ? "flex" : "hidden"} md:flex
       z-50
     `}
         >
           <button
-            className="flex items-center px-4 py-3 hover:text-black border-b md:border-none border-orange-600 md:border-0 w-full md:w-auto"
+            className="flex items-center px-4 py-3 hover:text-black border-b md:border-none border-gray-400 md:border-0 w-full md:w-auto"
             onClick={() => {
               router.push("./quadro");
               setMenuAberto(false);
@@ -79,7 +79,7 @@ export default function Interface({ children }) {
           </button>
 
           <button
-            className="flex items-center px-4 py-3 hover:text-black border-b md:border-none border-orange-600 md:border-0 w-full md:w-auto"
+            className="flex items-center px-4 py-3 hover:text-black border-b md:border-none border-gray-400 md:border-0 w-full md:w-auto"
             onClick={() => {
               router.push("/historico");
               setMenuAberto(false);
@@ -89,7 +89,7 @@ export default function Interface({ children }) {
           </button>
 
           <button
-            className="px-4 py-3 hover:text-black w-full md:w-auto border-b md:border-none border-orange-600 md:border-0"
+            className="px-4 py-3 hover:text-black w-full md:w-auto border-b md:border-none border-gray-400 md:border-0"
             onClick={() => {
               setNotf(true);
               setMenuAberto(false);
@@ -103,7 +103,7 @@ export default function Interface({ children }) {
               router.push("/perfil");
               setMenuAberto(false);
             }}
-            className="flex items-center px-4 py-3 hover:text-black w-full md:w-auto border-b md:border-none border-orange-600 md:border-0"
+            className="flex items-center px-4 py-3 hover:text-black w-full md:w-auto border-b md:border-none border-gray-400 md:border-0"
           >
             <div className="flex flex-col items-center">
               <img
