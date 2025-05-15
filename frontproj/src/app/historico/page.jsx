@@ -13,6 +13,13 @@ export default function Historico() {
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
+    const emailOn = localStorage.getItem("userEmail");
+    if (!emailOn) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  useEffect(() => {
     const userEmail = localStorage.getItem("userEmail");
 
     if (!userEmail) {

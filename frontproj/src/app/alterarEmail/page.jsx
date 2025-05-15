@@ -18,6 +18,13 @@ function AlterarEmail() {
   const router = useRouter();
 
   useEffect(() => {
+    const emailOn = localStorage.getItem("userEmail");
+    if (!emailOn) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  useEffect(() => {
     const storedEmail = localStorage.getItem("userEmail");
     if (!storedEmail) {
       setMsg("Você precisa estar logado!");
@@ -68,7 +75,11 @@ function AlterarEmail() {
               >
                 Confirmar
               </button>
-              {msg && <div className="text-red-800 mt-5 mb-5">{msg}</div>}
+              {msg && (
+                <div className="text-red-800 mt-5 mb-5 font-semibold">
+                  {msg}
+                </div>
+              )}
             </div>
           </form>
         </div>

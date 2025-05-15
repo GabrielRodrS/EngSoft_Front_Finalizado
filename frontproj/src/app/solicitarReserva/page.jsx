@@ -20,6 +20,13 @@ export default function SolicitarReserva() {
   });
 
   useEffect(() => {
+    const emailOn = localStorage.getItem("userEmail");
+    if (!emailOn) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       setReservaInfo({

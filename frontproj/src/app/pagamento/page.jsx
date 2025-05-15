@@ -10,7 +10,9 @@ import axios from "axios";
 export default function Pagamento() {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const [tipoPagamento, settipoPagamento] = useState("");
-  const [msg, setMsg] = useState("");
+  const [msg, setMsg] = useState(
+    "Nenhum valor será cobrado, apenas uma simulação!"
+  );
 
   const [nomeCartao, setNomeCartao] = useState("");
   const [numeroCartao, setNumeroCartao] = useState("");
@@ -21,6 +23,13 @@ export default function Pagamento() {
   // const [qrCode, setQrCode] = useState("");
 
   const router = useRouter();
+
+  useEffect(() => {
+    const emailOn = localStorage.getItem("userEmail");
+    if (!emailOn) {
+      router.push("/login");
+    }
+  }, [router]);
 
   const [reservaInfo, setReservaInfo] = useState({
     userEmail: "",
@@ -150,7 +159,9 @@ export default function Pagamento() {
             <button className="py-2 px-4 rounded-md bg-green-500" type="submit">
               Confirmar
             </button>
-            {msg && <div className="text-red-800 mt-5">{msg}</div>}
+            {msg && (
+              <div className="text-red-800 mt-5 font-semibold">{msg}</div>
+            )}
           </form>
         )}
 
@@ -190,7 +201,7 @@ export default function Pagamento() {
             <button className="py-2 px-4 rounded-md bg-green-500" type="submit">
               Confirmar
             </button>
-            {msg && <div className="text-red-800 mt-5">{msg}</div>}
+            {<div className="text-red-800 mt-5 font-semibold">{msg}</div>}
           </form>
         )}
       </FundoFormulariosInt>

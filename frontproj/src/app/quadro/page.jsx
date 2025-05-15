@@ -21,6 +21,13 @@ function Quadro() {
   const baseValor = 40;
 
   useEffect(() => {
+    const emailOn = localStorage.getItem("userEmail");
+    if (!emailOn) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  useEffect(() => {
     if (data) {
       const [year, month, day] = data.split("-");
       const formattedDate = `${day}-${month}-${year}`;

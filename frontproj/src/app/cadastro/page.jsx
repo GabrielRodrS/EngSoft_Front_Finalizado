@@ -89,7 +89,7 @@ function Cadastro() {
   };
 
   return (
-    <div className="flex flex-col text-black items-center justify-center mt-5 md:mt-10">
+    <div className="flex flex-col text-black items-center justify-center">
       <Titulo>Cadastrar</Titulo>
       <form onSubmit={handleSubmit} className="w-full max-w-md px-4">
         <div className="pb-8 mt-3">

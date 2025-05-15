@@ -63,7 +63,7 @@ function Login() {
 
   return (
     <FundoFormularios>
-      <div className="flex flex-col items-center justify-center text-black mt-5">
+      <div className="flex flex-col items-center justify-center text-black">
         <Titulo>Login</Titulo>
 
         <form onSubmit={handleSubmit} className="mt-2">

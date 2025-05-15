@@ -11,6 +11,13 @@ export default function Perfil() {
   const [isLoading, setIsLoading] = useState(true); // Para garantir atualização
 
   useEffect(() => {
+    const emailOn = localStorage.getItem("userEmail");
+    if (!emailOn) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const nome = localStorage.getItem("userNome") || "";
       const tel = localStorage.getItem("userTel") || "";

@@ -17,6 +17,13 @@ function AlterarTelefone() {
   const router = useRouter();
 
   useEffect(() => {
+    const emailOn = localStorage.getItem("userEmail");
+    if (!emailOn) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  useEffect(() => {
     const storedEmail = localStorage.getItem("userEmail");
     if (!storedEmail) {
       setMsg("Você precisa estar logado!");
@@ -105,7 +112,9 @@ function AlterarTelefone() {
                 Confirmar
               </button>
             </div>
-            {msg && <div className="text-red-800 mb-5">{msg}</div>}
+            {msg && (
+              <div className="text-red-800 mb-5 font-semibold">{msg}</div>
+            )}
           </form>
         </div>
       </FundoFormulariosInt>
